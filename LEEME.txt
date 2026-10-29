@@ -1,0 +1,109 @@
+﻿LANDING + BROCHURE ONLINE - BLUE OPEN DATA
+==================================================
+
+Sitio estático (HTML + CSS + JavaScript). No necesita base de datos
+ni servidor especial: funciona en cualquier hosting.
+
+
+1. CONTENIDO DE LA CARPETA
+--------------------------------------------------
+index.html               Landing: página principal de la empresa.
+brochure/index.html      Brochure online (bienvenida + cada solución).
+assets/css/styles.css    Diseño de marca: colores, tipografías y tamaños.
+                         Lo usan la landing y el brochure.
+assets/css/landing.css   Estilos propios de la landing.
+assets/js/app.js         Navegación del brochure (bienvenida y soluciones).
+assets/img/              Logos, capturas de la plataforma y logos de clientes.
+
+La carpeta assets es compartida: el brochure la toma con "../assets/".
+
+
+2. CÓMO SUBIRLO A LA WEB
+--------------------------------------------------
+Subí TODO el contenido de esta carpeta respetando la estructura
+(index.html, brochure/ y assets/).
+
+  a) Como sitio principal: en la carpeta pública del hosting
+     (public_html o www). Queda:
+       https://www.blueopendata.com/            Landing
+       https://www.blueopendata.com/brochure/   Brochure
+
+  b) En una subcarpeta (por ej. "web"): queda en /web/ y
+     /web/brochure/. Todo funciona igual porque los links son relativos.
+
+
+3. LINKS DIRECTOS A CADA SOLUCIÓN DEL BROCHURE
+--------------------------------------------------
+Agregando un # al final se abre directamente esa solución:
+
+  /brochure/#software          Desarrollo de software
+  /brochure/#logistica         Logística
+  /brochure/#sector-publico    Sector público
+  /brochure/#b-sports          B-Sports
+  /brochure/#meditory          Meditory
+  /brochure/#scan-ai           Scan AI
+  /brochure/#b-points          B-Points
+
+Ejemplo: a un club le mandás .../brochure/#b-sports
+Los botones de la landing ya llevan a cada una de estas soluciones.
+
+
+4. CÓMO MODIFICARLO
+--------------------------------------------------
+Se puede editar con cualquier editor de código. Recomendado: Visual
+Studio Code (gratuito). Evitá Word, porque rompe el código.
+
+Cambiar un texto:
+  Abrí index.html (landing) o brochure/index.html, buscá la frase
+  (Ctrl+F) y reemplazala. Cuidado de no borrar las etiquetas entre
+  < y >.
+
+Cambiar datos de contacto:
+  Están en los DOS archivos (landing y brochure): buscá "Contacto".
+  Están el teléfono, el mail, las redes y la dirección. El número de
+  WhatsApp aparece también dentro de los links "https://wa.me/549...":
+  cambialo en todos.
+
+Cambiar una imagen:
+  Reemplazá el archivo en assets/img/ por otro con el MISMO nombre,
+  o cambiá el nombre en el HTML (src="assets/img/..." en la landing,
+  src="../assets/img/..." en el brochure).
+
+Cambiar colores:
+  En assets/css/styles.css, al principio, están las variables de
+  marca (--navy, --marino, --ciber, --vivo, etc.). Aplican a la
+  landing y al brochure. El modo oscuro se activa según la preferencia
+  de apariencia configurada en el dispositivo.
+
+Landing:
+  Cada sección es un <section ... id="..."> (servicios, industrias,
+  productos, proceso, clientes, contacto). El menú de arriba apunta
+  a esos id.
+
+Brochure:
+  Cada brochure está en brochure/index.html dentro de un bloque:
+    <article data-sol="logistica" ...> ... </article>
+  Cada capítulo es un <section ... data-ch="Nombre del capítulo">.
+  El índice de capítulos se arma solo a partir de esos nombres.
+
+Agregar un capítulo al brochure:
+  Copiá un <section ...> ... </section> completo dentro del
+  article que quieras y cambiá su data-ch y su contenido.
+
+Agregar una solución nueva:
+  1. En brochure/index.html, copiá un <article data-sol="..."> completo
+     y cambiá data-sol (ej. "turnos"), data-title y el contenido.
+  2. En assets/js/app.js, sumala a la lista SOLS:
+       turnos:'Sistema de turnos',
+  3. En la pantalla de bienvenida (inicio de brochure/index.html)
+     agregá su tarjeta con href="#turnos".
+  4. Si querés que aparezca en la landing, sumá una tarjeta en
+     index.html con href="brochure/index.html#turnos".
+
+
+5. PROBARLO EN LA COMPU
+--------------------------------------------------
+Doble clic en index.html y se abre la landing en el navegador; desde
+ahí se navega al brochure. Las tipografías se cargan de Google Fonts,
+así que hace falta conexión a internet para verlo con la fuente de
+marca.
